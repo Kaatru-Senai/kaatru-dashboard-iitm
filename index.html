@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IITM Kaatru Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="./assets/kaatru_symbol.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&family=Ubuntu&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./leaflet/leaflet.css">
     <link rel="stylesheet" href="./index.css">
     <script src="./leaflet//leaflet.js"></script>
     <script src="./leaflet-heat.js"></script>
     <script src="./heatmap.js"></script>
+    <script src="./mock-api.js"></script>
 </head>
 <body>
     <div class="container">
@@ -31,34 +35,42 @@
         </div>
         <div class="body_container">
             <div class="upper_div">
-                <div class=""></div>
-                <div class=""></div>
-                <div class=""></div>
-                <div class=""></div>
+                <div class="aggregate_div">
+                    <div class="aggregate_div_location"><h3>IITM CAMPUS</h3></div>
+                    <div class="aggregate_inner_container">
+                        <div class="aggregate_div_image"><img src="./assets/weather/cloudy-day-1.svg" alt="" id="aggregate_img"></div>
+                    <div class="aggregate_div_values">
+                        <div class="aggregate_div_temp">
+                            <img src="./assets/thermometer_FILL0_wght400_GRAD0_opsz48.svg" alt="" class="value_images">
+                            <h1>29<span>&#8451</span></h1>
+                        </div>
+                        <div class="aggregate_div_temp">
+                            <img src="./assets/humidity_percentage_FILL0_wght400_GRAD0_opsz48.svg" alt="" class="value_images">
+                            <h1>60%</h1>
+                        </div>
+                    </div>
+                    </div>
+                        <!-- <div class="aggregate_div_temp">
+                            <img src="./assets/location_on_FILL0_wght400_GRAD0_opsz48.svg" alt="" class="location_image">
+                            <h1>IIT MADRAS</h1>
+                        </div> -->
+                </div>
+                <div class="today_hightlight_div"></div>
             </div>
             <div class="lower_div">
                 <div class="forcast_container">
                     <p>7 Days Forecast</p>
-                    <div class=""></div>
+                    <div class="forecast_item_container" id="forecast">
+                    </div>
                 </div>
                 <div class="map_container">
-                    <div id="map">
-                        
-                    </div>
+                    <div id="map"></div>
                 </div>
             </div>
         </div>
-        
     </div>
     <script src="main.js"></script>
 </body>
 
 </html>
 
-<!-- <div class="map_container">
-    <div id="map"></div>
-</div>           
-<div class="popup">
-    <h3>MSB</h3>
-    <p>32 &nbsp;&nbsp;°C</p>
-</div> -->
