@@ -1,3 +1,35 @@
+// var script = document.createElement('script');
+// script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBNcNz8iCP5OwWx8QToU7CJCL4d9F2Mmuk&callback=initMap';
+// script.async = true;
+
+// let map;
+
+// async function initMap() {
+//   // The location of Uluru
+//   const position = { lat: 12.991555 ,lng: 80.240746, };
+//   // Request needed libraries.
+//   //@ts-ignore
+//   const { Map } = await google.maps.importLibrary("maps");
+//   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+//   // The map, centered at Uluru
+//   map = new Map(document.getElementById("map"), {
+//     zoom: 14,
+//     center: position,
+//     mapId: "91c2b3008fb84ca1",
+//   });
+
+//   // The marker, positioned at Uluru
+//   const marker = new AdvancedMarkerElement({
+//     map: map,
+//     position: position,
+//     title: "Uluru",
+//   });
+// }
+
+// window.initMap = initMap;
+
+
 var map = L.map("map").setView([12.993456, 80.237703], 15);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
@@ -6,6 +38,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 let data;
 let forecast;
 var markers = [];
+
 
 async function getData() {
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -83,4 +116,21 @@ function flyToMarkers() {
 }
 
 // Call the getData function
+
+async function loop(){
+  setInterval(()=>{
+    fetch('http://127.0.0.1:8000/').then((e)=>console.log(e))
+    let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/LM27/sen");
+
+    socket.onmessage = function(event) {
+      data=JSON.parse(event.data)
+      console.log(data.data[0])
+      var updateDiv = document.getElementById("srvtime")
+      updateDiv.innerHTML=data.data[0].srvtime
+    };
+    console.log("websocket")
+  },5000)
+}
+
+loop();
 getData();
