@@ -246,10 +246,13 @@ function flyToMarkers() {
 // Call the getData function
 
 async function loop(){
-  setInterval(()=>{
-    fetch('https://bw06.kaatru.org/config').then((e)=>console.log(e))
+  setInterval(async()=>{
+    const response = await fetch("https://bw06.kaatru.org/config");
+    var data = await response.json();
+    console.log(data.data[0]);
+    var http = document.getElementById("http")
+    http.innerHTML=data.data[0].device
     let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/LM27/sen");
-
     socket.onmessage = function(event) {
       data=JSON.parse(event.data)
       console.log(data.data[0])
