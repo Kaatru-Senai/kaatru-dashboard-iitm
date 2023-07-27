@@ -247,7 +247,7 @@ function flyToMarkers() {
 
 async function loop(){
   setInterval(()=>{
-    fetch('http://127.0.0.1:8000/').then((e)=>console.log(e))
+    fetch('https://bw06.kaatru.org/config').then((e)=>console.log(e))
     let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/LM27/sen");
 
     socket.onmessage = function(event) {
