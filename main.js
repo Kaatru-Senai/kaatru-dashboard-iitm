@@ -252,7 +252,7 @@ async function loop(){
     console.log(data.data[0]);
     var http = document.getElementById("http")
     http.innerHTML=data.data[0].device
-    let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/LM27/sen");
+    let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/M30/sen");
     socket.onmessage = function(event) {
       data=JSON.parse(event.data)
       console.log(data.data[0])
