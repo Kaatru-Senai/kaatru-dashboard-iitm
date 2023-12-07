@@ -139,7 +139,7 @@
 // async function loop(){
 //   setInterval(()=>{
 //     fetch('http://127.0.0.1:8000/').then((e)=>console.log(e))
-//     let socket = new WebSocket("wss://43.204.37.165/stream/coloc4/LM27/sen");
+//     let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/LM27/sen");
 
 //     socket.onmessage = function(event) {
 //       data=JSON.parse(event.data)
@@ -247,14 +247,14 @@ function flyToMarkers() {
 
 async function loop(){
   setInterval(async()=>{
-    const response = await fetch("http://43.204.37.165/config");
+    const response = await fetch("https://bw06.kaatru.org/config");
     var data = await response.json();
     console.log(data.data[0]);
     var http = document.getElementById("http")
     var http_request  = document.getElementById("http_request")
     http.innerHTML="SG1"
     http_request.innerHTML=data.data[0].device;
-    let socket = new WebSocket("ws://43.204.37.165/stream/coloc4/SG1/sen");
+    let socket = new WebSocket("wss://bw06.kaatru.org/stream/coloc4/SG1/sen");
     socket.onmessage = function(event) {
       data=JSON.parse(event.data)
       console.log(data.data[0])
